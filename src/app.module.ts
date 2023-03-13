@@ -6,12 +6,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ProductModule } from './product/products.module';
+import { CustomerModule } from './customer/customers.module';
 
 @Module({
   imports: [
     UsersModule,
     ProductModule,
     AuthModule,
+    CustomerModule,
     MongooseModule.forRoot(
       'mongodb://localhost/tracNetJWT',
     ),
