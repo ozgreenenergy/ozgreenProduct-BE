@@ -26,7 +26,6 @@ export class AuthService {
     return {
       username: user.username,
       userId: user._id,
-      avatar: user.avatar,
       access_token: this.jwtService.sign(payload),
       expiredAt: Date.now() + 60000,
     };

@@ -5,13 +5,15 @@ import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProductModule } from './product/products.module';
 
 @Module({
   imports: [
     UsersModule,
+    ProductModule,
     AuthModule,
     MongooseModule.forRoot(
-      'mongodb+srv://leduc1901:melody19@kylecluster.abjzu.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb://localhost/tracNetJWT',
     ),
     ConfigModule.forRoot(),
   ],

@@ -19,7 +19,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
-  @Post()
+  @Post('/signup')
   async createUser(
     @Body('username') username: string,
     @Body('password') password: string,
@@ -39,21 +39,4 @@ export class UsersController {
     return this.userService.getMe(params.id);
   }
 
-  @UseGuards(AuthGuard('jwt'))
-  @Post(':id/upload')
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadAvatar(
-    @UploadedFile(
-      new ParseFilePipe({
-        validators: [
-          new FileTypeValidator({ fileType: '.(png|jpeg|jpg)' }),
-          new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 4 }),
-        ],
-      }),
-    )
-    file: Express.Multer.File,
-    @Param() params,
-  ) {
-    return this.userService.uploadAvatar(file, params.id);
-  }
 }
