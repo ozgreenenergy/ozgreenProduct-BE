@@ -16,7 +16,7 @@ export class Product {
 
   
   @Prop({ type: Date})
-  mod: Date;
+  created_at: Date;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

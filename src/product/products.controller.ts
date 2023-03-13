@@ -14,12 +14,13 @@ export class ProductsController {
         @Body('productModelRef') productModelRef: string,
         @Body('product') product: string,
         @Body('aCustomerRef') aCustomerRef: string,
+        @Body('created_at') created_at: Date,
     ): Promise<Product> {
         const result = await this.productsService.createProduct(
             productModelRef,
             product,
             aCustomerRef,
-            // mod(: any),
+            created_at,
         );
         return result;
     }
