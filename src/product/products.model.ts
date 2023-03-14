@@ -6,17 +6,19 @@ export type ProductDocument = Product & Document;
 @Schema()
 export class Product {
   @Prop()
-  productModelRef: string;
-
-  @Prop({ type: SchemaTypes.ObjectId, ref: 'ProductCategory', required: true })
-  productModelId!: Types.ObjectId;
+  name: string;
 
   @Prop()
-  product: string;
+  id_serial: string;
+
+  @Prop()
+  description: string;
 
   @Prop()
   aCustomerRef: string;
 
+  @Prop({ type: SchemaTypes.ObjectId, ref: 'ProductCategory', required: true })
+  productModelRef!: Types.ObjectId;
   
   @Prop({ type: Date})
   created_at: Date;

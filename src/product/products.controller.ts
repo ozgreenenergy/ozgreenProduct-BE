@@ -11,15 +11,19 @@ export class ProductsController {
     @UseGuards(AuthGuard('jwt'))
     @Post('add')
     async createProduct(
-        @Body('productModelRef') productModelRef: string,
-        @Body('product') product: string,
+        @Body('name') name: string,
+        @Body('id_serial') id_serial: string,
+        @Body('description') description: string,
         @Body('aCustomerRef') aCustomerRef: string,
+        @Body('productModelRef') productModelRef: string,
         @Body('created_at') created_at: Date,
     ): Promise<Product> {
         const result = await this.productsService.createProduct(
-            productModelRef,
-            product,
+            name,
+            id_serial,
+            description,
             aCustomerRef,
+            productModelRef,
             created_at,
         );
         return result;

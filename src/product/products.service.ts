@@ -6,11 +6,13 @@ import { Product, ProductDocument } from './products.model';
 @Injectable()
 export class ProductsService {
     constructor(@InjectModel('product') private readonly productModel: Model<ProductDocument>) { }
-    async createProduct(productModelRef: string, product: string, aCustomerRef: string,_created_at: Date): Promise<Product> {
+    async createProduct(name: string, id_serial: string, description: string, aCustomerRef: string, productModelRef: string,_created_at: Date): Promise<Product> {
         return this.productModel.create({
-            productModelRef,
-            product,
+            name,
+            id_serial,
+            description,
             aCustomerRef,
+            productModelRef,
             created_at : new Date(),
         });
     }
