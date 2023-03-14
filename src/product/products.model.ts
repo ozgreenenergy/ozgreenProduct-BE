@@ -14,8 +14,8 @@ export class Product {
   @Prop()
   description: string;
 
-  @Prop()
-  aCustomerRef: string;
+  @Prop({ type: SchemaTypes.ObjectId, ref: 'Customer', required: true })
+  aCustomerRef!: Types.ObjectId;
 
   @Prop({ type: SchemaTypes.ObjectId, ref: 'ProductCategory', required: true })
   productModelRef!: Types.ObjectId;
