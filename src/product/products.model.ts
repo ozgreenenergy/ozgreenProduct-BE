@@ -9,7 +9,7 @@ export class Product {
   name: string;
 
   @Prop()
-  id_serial: string;
+  imei: string;
 
   @Prop()
   description: string;

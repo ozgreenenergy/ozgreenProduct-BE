@@ -11,6 +11,8 @@ import { ProductCategoryModule } from './product-category/product-category.modul
 import { MenuModule } from './menu/menus.module';
 import { ResponseInterceptor } from './auth/strategies/response';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { DeviceModule } from './device/device.module';
+
 
 
 @Module({
@@ -25,6 +27,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     ),
     ConfigModule.forRoot(),
     ProductCategoryModule,
+    DeviceModule,
     
   ],
   controllers: [AppController],
