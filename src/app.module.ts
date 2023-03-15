@@ -8,6 +8,9 @@ import { ConfigModule } from '@nestjs/config';
 import { ProductModule } from './product/products.module';
 import { CustomerModule } from './customer/customers.module';
 import { ProductCategoryModule } from './product-category/product-category.module';
+import { MenuModule } from './menu/menus.module';
+import { ResponseInterceptor } from './auth/strategies/response';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 
 @Module({
@@ -16,6 +19,7 @@ import { ProductCategoryModule } from './product-category/product-category.modul
     ProductModule,
     AuthModule,
     CustomerModule,
+    MenuModule,
     MongooseModule.forRoot(
       'mongodb://localhost/tracNetJWT',
     ),
@@ -24,6 +28,13 @@ import { ProductCategoryModule } from './product-category/product-category.modul
     
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useFactory: () =>
+        new ResponseInterceptor('Success', 'Something went wrong'),
+    },
+  ],
 })
 export class AppModule {}

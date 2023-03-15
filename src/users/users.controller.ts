@@ -23,8 +23,9 @@ export class UsersController {
   async createUser(
     @Body('username') username: string,
     @Body('password') password: string,
+    @Body('fullName') fullName: string,
   ) {
-    return this.userService.createUser(username, password);
+    return this.userService.createUser(username, password, fullName);
   }
 
   @UseGuards(AuthGuard('jwt'))
