@@ -14,7 +14,6 @@ export class AuthService {
     username: string,
     password: string,
   ): Promise<any> {
-    console.log(username, password);
     const user = await this.usersService.getUser({ username, password });
 
     return user ?? null;
