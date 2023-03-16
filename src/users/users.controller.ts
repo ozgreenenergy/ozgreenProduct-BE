@@ -24,8 +24,9 @@ export class UsersController {
     @Body('username') username: string,
     @Body('password') password: string,
     @Body('fullName') fullName: string,
+    @Body('status') status: Number,
   ) {
-    return this.userService.createUser(username, password, fullName);
+    return this.userService.createUser(username, password, fullName, status);
   }
 
   @UseGuards(AuthGuard('jwt'))
