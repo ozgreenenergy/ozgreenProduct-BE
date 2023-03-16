@@ -18,7 +18,7 @@ export class DeviceService {
       const data = new this.deviceModel(createDeviceDto);
       return data.save();
     } else {
-      return "IMEI already exist";
+      return "Device already exist";
     } 
   }
 
