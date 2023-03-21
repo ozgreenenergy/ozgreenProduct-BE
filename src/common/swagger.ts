@@ -21,33 +21,41 @@ ApiBody({
     },
   });
 
-export const loginTags = () => ApiTags('login');
+export const getUserOperation = () =>
+  ApiOperation({ summary: 'signup' });
+
+export const getUserBody = () =>
+  ApiBody({
+      schema: {
+        type: 'object',
+        properties: {
+          fullName: {
+            type: 'string',
+            example: 'testData',
+          },
+          username: {
+            type: 'string',
+            example: 'testData@gmail.com',
+          },
+          password: {
+            type: 'string',
+            example: 'demo123',
+          },
+          status: {
+            type: 'string',
+            example: '1',
+          },
+        },
+      },
+    });
+
+export const loginTags = () => ApiTags('Authentication');
 
 // End Login API
 
 /*............................................................................................. */
 
 // Start User Details API
-
-export const getUserOperation = () =>
-  ApiOperation({ summary: 'Login' });
-
-export const getUserBody = () =>
-ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        username: {
-          type: 'string',
-          example: 'testData@gmail.com',
-        },
-        password: {
-          type: 'string',
-          example: 'demo123',
-        },
-      },
-    },
-  });
 
 export const getUserParam = () =>
   ApiParam({
@@ -78,8 +86,11 @@ export const getproductsOperation = () =>
 export const getProductsResponse = () =>
   ApiResponse({ status: 200, description: 'Return all products' });
 
-export const productTags = () => ApiTags('product');
+export const productTags = () => ApiTags('Product');
 
-
-export { ApiBearerAuth };
 // End products API
+
+
+/*............................................................................................. */
+//Common API
+export { ApiBearerAuth };

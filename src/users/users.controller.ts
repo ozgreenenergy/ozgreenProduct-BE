@@ -10,16 +10,17 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UsersService } from './users.service';
-import { ApiBearerAuth,getUserParam,deleteUserParam, userTags } from '../common/swagger';
+import { ApiBearerAuth,getUserParam,deleteUserParam,getUserBody,getUserOperation,userTags, loginTags } from '../common/swagger';
 import { User } from './user.model';
 import * as bcrypt from 'bcrypt';
 
 @Controller('users')
-@userTags()
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
-
-  @Post('/signup')
+  @loginTags()
+  @Post('')
+  @getUserBody()
+  @getUserOperation()
   async createUser(
     @Body('username') username: string,
     @Body('password') password: string,
@@ -31,9 +32,9 @@ export class UsersController {
     return this.userService.createUser(username, hashedPassword, fullName, status);
   }
   
-
-  @ApiBearerAuth('token')
   @UseGuards(AuthGuard('jwt'))
+  @userTags()
+  @ApiBearerAuth('token')
   @Get()
   async getAllUsers() {
     return this.userService.getUsers();
@@ -41,6 +42,7 @@ export class UsersController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get(':id')
+  @userTags()
   @getUserParam()
   @ApiBearerAuth('token')
   async getMe(@Param() params) {
@@ -49,6 +51,7 @@ export class UsersController {
 
   @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
+  @userTags()
   @deleteUserParam()
   @ApiBearerAuth('token')
   async delete(@Param('id') id: string): Promise<User> {
