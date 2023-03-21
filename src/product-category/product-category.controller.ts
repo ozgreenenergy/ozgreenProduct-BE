@@ -1,4 +1,4 @@
-import { Body, Controller, Request, Post, Get, Param,UseGuards } from '@nestjs/common';
+import { Body, Controller, Request, Post, Get, Param,UseGuards, Put, Delete } from '@nestjs/common';
 import { ProductCategoryService } from './product-category.service';
 import { ProductCategory } from './product-category.model';
 import { AuthGuard } from '@nestjs/passport';
@@ -28,5 +28,17 @@ export class ProductCategoryController {
     @Get()
     async findAll(): Promise<ProductCategory[]> {
         return this.productsCatService.findAll();
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Put(':id')
+    async update(@Param('id') id: string, @Body() productCategory: ProductCategory): Promise<ProductCategory> {
+        return this.productsCatService.update(id, productCategory);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Delete(':id')
+    async delete(@Param('id') id: string): Promise<ProductCategory> {
+        return this.productsCatService.delete(id);
     }
 }

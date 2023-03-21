@@ -38,4 +38,8 @@ export class UsersService {
     return user;
   }
 
+  async delete(id: string): Promise<User> {
+    return this.userModel.findByIdAndRemove(id).exec();
+  }
+
 }

@@ -17,5 +17,13 @@ export class ProductCategoryService {
 
     async findAll(): Promise<ProductCategory[]> {
         return this.productCategory.find().exec();
-      }
+    }
+
+    async update(id: string, menu: ProductCategory): Promise<ProductCategory> {
+        return this.productCategory.findByIdAndUpdate(id, menu, { new: true }).exec();
+    }
+    
+    async delete(id: string): Promise<ProductCategory> {
+       return this.productCategory.findByIdAndRemove(id).exec();
+    }
 }
