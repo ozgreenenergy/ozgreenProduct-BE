@@ -1,4 +1,4 @@
-import { ApiBody, ApiOperation, ApiResponse, ApiTags,ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse, ApiTags,ApiBearerAuth, ApiParam } from '@nestjs/swagger';
 
 // Start Login API
 export const getLoginOperation = () =>
@@ -47,6 +47,22 @@ ApiBody({
         },
       },
     },
+  });
+
+export const getUserParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The ID of the user',
+    example: 'objectId(123)',
+    required: true,
+  });
+
+export const deleteUserParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The ID of the user',
+    example: 'objectId(123)',
+    required: true,
   });
 
 export const userTags = () => ApiTags('User');

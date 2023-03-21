@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UsersService } from './users.service';
-import { ApiBearerAuth, userTags } from '../common/swagger';
+import { ApiBearerAuth,getUserParam,deleteUserParam, userTags } from '../common/swagger';
 import { User } from './user.model';
 import * as bcrypt from 'bcrypt';
 
@@ -32,7 +32,7 @@ export class UsersController {
   }
   
 
-  @ApiBearerAuth()
+  @ApiBearerAuth('token')
   @UseGuards(AuthGuard('jwt'))
   @Get()
   async getAllUsers() {
@@ -41,12 +41,16 @@ export class UsersController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get(':id')
+  @getUserParam()
+  @ApiBearerAuth('token')
   async getMe(@Param() params) {
     return this.userService.getMe(params.id);
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
+  @deleteUserParam()
+  @ApiBearerAuth('token')
   async delete(@Param('id') id: string): Promise<User> {
     return this.userService.delete(id);
   }

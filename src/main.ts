@@ -13,7 +13,7 @@ async function bootstrap() {
     .addTag('OzGreen')
     .addBearerAuth(
       { type: 'http', scheme: 'Bearer', bearerFormat: 'jwt' },
-      'Token',
+      'token',
     )
     .build();
   const document = SwaggerModule.createDocument(app, config);
