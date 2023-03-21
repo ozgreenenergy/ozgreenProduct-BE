@@ -1,4 +1,6 @@
-import { Column ,  PrimaryGeneratedColumn } from 'typeorm';
+import { Column ,  PrimaryGeneratedColumn , OneToOne ,  JoinColumn } from 'typeorm';
+import {  } from 'typeorm';
+import { ProductCategory } from 'src/product-category/product-category.model'
 
 export class Device {
     @PrimaryGeneratedColumn()
@@ -14,5 +16,10 @@ export class Device {
     productModelId: string;
 
     @Column()
-    created_at: Date;
+    createdAt: Date;
+
+    @OneToOne(() => ProductCategory)
+    @JoinColumn()
+    proCat: ProductCategory
 }
+
