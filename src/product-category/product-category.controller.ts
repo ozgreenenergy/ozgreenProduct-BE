@@ -23,4 +23,10 @@ export class ProductCategoryController {
         );
         return result;
     }
+
+    @UseGuards(AuthGuard('jwt'))
+    @Get()
+    async findAll(): Promise<ProductCategory[]> {
+        return this.productsCatService.findAll();
+    }
 }

@@ -14,4 +14,8 @@ export class ProductCategoryService {
             created_at : new Date(),
         });
     }
+
+    async findAll(): Promise<ProductCategory[]> {
+        return this.productCategory.find().exec();
+      }
 }
