@@ -11,6 +11,10 @@ async function bootstrap() {
     .setDescription('This documentation holds all APIs description')
     .setVersion('1.0')
     .addTag('OzGreen')
+    .addBearerAuth(
+      { type: 'http', scheme: 'Bearer', bearerFormat: 'jwt' },
+      'Token',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

@@ -4,18 +4,14 @@ import {
   Post,
   UseGuards,
   Get,
-  UploadedFile,
-  UseInterceptors,
   Param,
-  ParseFilePipe,
-  FileTypeValidator,
-  MaxFileSizeValidator,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { FileInterceptor } from '@nestjs/platform-express';
 import { UsersService } from './users.service';
+import { ApiBearerAuth, userTags } from '../common/swagger';
 
 @Controller('users')
+@userTags()
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
@@ -29,6 +25,7 @@ export class UsersController {
     return this.userService.createUser(username, password, fullName, status);
   }
 
+  @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   @Get()
   async getAllUsers() {
