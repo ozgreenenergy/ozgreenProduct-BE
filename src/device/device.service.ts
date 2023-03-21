@@ -4,14 +4,14 @@ import { CreateDeviceDto } from './dto/create-device.dto';
 import { UpdateDeviceDto } from './dto/update-device.dto';
 import { Device , DeviceDocument } from './schema/device.schema';
 import { Model } from 'mongoose';
-import { Equal } from 'typeorm';
+import { Equal , DataSource } from 'typeorm';
 
 @Injectable()
 export class DeviceService {
 
   constructor(@InjectModel(Device.name) private readonly deviceModel: Model < DeviceDocument > ) {}
 
-  async create(createDeviceDto: CreateDeviceDto)  {
+  async create(createDeviceDto: CreateDeviceDto) {
     let imeiNo = createDeviceDto['imei_no'];
     let check = this.checkRecordExists(imeiNo);
     if((await check).length === 0) {
@@ -26,8 +26,8 @@ export class DeviceService {
     return this.deviceModel.find({ imei_no: id }).exec();
   }
 
-  findAll() {
-    return `This action returns all device`;
+  async findAll() {
+    return this.deviceModel.find().exec();
   }
 
   findOne(id: number) {
