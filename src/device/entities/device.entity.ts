@@ -13,13 +13,10 @@ export class Device {
     imei_no: string;
 
     @Column()
-    productModelId: string;
-
-    @Column()
     createdAt: Date;
 
-    @OneToOne(() => ProductCategory)
-    @JoinColumn()
-    proCat: ProductCategory
+
+    @OneToOne(type => ProductCategory, productCategory => productCategory.modelId)
+    productModelId: ProductCategory;
 }
 

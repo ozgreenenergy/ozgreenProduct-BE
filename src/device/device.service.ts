@@ -6,6 +6,7 @@ import { Device , DeviceDocument } from './schema/device.schema';
 import { Model } from 'mongoose';
 import { Equal , DataSource } from 'typeorm';
 
+
 @Injectable()
 export class DeviceService {
 
@@ -27,11 +28,11 @@ export class DeviceService {
   }
 
   async findAll() {
-    return this.deviceModel.find().exec();
+    return await this.deviceModel.find({relations: ['productModelId', 'productModelId.name']});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} device`;
+  async findOne(id: number) {
+    return await this.deviceModel.find( { id: id } , {relations: ['productModelId']});
   }
 
   async update(id: number, updateDeviceDto: UpdateDeviceDto): Promise< DeviceDocument > {

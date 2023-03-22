@@ -1,6 +1,6 @@
 import { Prop , Schema , SchemaFactory } from '@nestjs/mongoose';
-import { Document , SchemaTypes , Types } from 'mongoose';
-
+import { Document, Types, Schema as MongooseSchema } from 'mongoose';
+import { ProductCategory } from 'src/product-category/product-category.model'
   
 export type DeviceDocument = Device & Document;
   
@@ -11,19 +11,13 @@ export type DeviceDocument = Device & Document;
   
     @Prop()
     imei_no: string;
-  
-    @Prop({ type: SchemaTypes.ObjectId, ref: 'ProductCategory', required: true , })
-    productModelId!: Types.ObjectId;
     
+    @Prop([{ type: MongooseSchema.Types.ObjectId, ref: 'ProductCategory' , required: true}])
+     productModelId: ProductCategory;
+
     @Prop({ type: Date , default: Date.now })
     createdAt: Date
 
-    relations: {
-      models: {
-        type: 'one-to-one',
-        target: 'ProductCategory',
-      },
-    }
   }
   
   export const DeviceSchema = SchemaFactory.createForClass(Device);
