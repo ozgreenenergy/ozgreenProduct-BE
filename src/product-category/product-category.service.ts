@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ProductCategory, ProductCategoryDocument } from './product-category.model';
-import { dd } from 'dump-die'
 
 @Injectable()
 export class ProductCategoryService {
@@ -17,7 +16,6 @@ export class ProductCategoryService {
     }
 
     async findOne(id: number) {
-        dd(id)
         return await this.productCategory.findById(id);
     }
 
