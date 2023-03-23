@@ -5,20 +5,17 @@ import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
-import { ProductModule } from './product/products.module';
 import { CustomerModule } from './customer/customers.module';
 import { ProductCategoryModule } from './product-category/product-category.module';
 import { MenuModule } from './menu/menus.module';
 import { ResponseInterceptor } from './auth/strategies/response';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { DeviceModule } from './device/device.module';
-
-
+import { ListenerScriptModule } from './listener-script/listener-script.module';
 
 @Module({
   imports: [
     UsersModule,
-    ProductModule,
     AuthModule,
     CustomerModule,
     MenuModule,
@@ -28,7 +25,7 @@ import { DeviceModule } from './device/device.module';
     ConfigModule.forRoot(),
     ProductCategoryModule,
     DeviceModule,
-    
+    ListenerScriptModule,
   ],
   controllers: [AppController],
   providers: [

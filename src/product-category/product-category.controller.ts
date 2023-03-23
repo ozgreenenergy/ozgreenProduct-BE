@@ -31,6 +31,12 @@ export class ProductCategoryController {
     }
 
     @UseGuards(AuthGuard('jwt'))
+    @Get(':id')
+    async findOne(@Param() params) {
+        return await this.productsCatService.findOne(params.id);
+    }
+
+    @UseGuards(AuthGuard('jwt'))
     @Put(':id')
     async update(@Param('id') id: string, @Body() productCategory: ProductCategory): Promise<ProductCategory> {
         return this.productsCatService.update(id, productCategory);

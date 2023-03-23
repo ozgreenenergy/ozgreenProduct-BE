@@ -22,7 +22,7 @@ ApiBody({
   });
 
 export const getUserOperation = () =>
-  ApiOperation({ summary: 'signup' });
+  ApiOperation({ summary: 'Sign Up' });
 
 export const getUserBody = () =>
   ApiBody({
@@ -35,7 +35,7 @@ export const getUserBody = () =>
           },
           username: {
             type: 'string',
-            example: 'testData@gmail.com',
+            example: 'Rahudemo@gmail.com',
           },
           password: {
             type: 'string',
@@ -80,14 +80,49 @@ export const userTags = () => ApiTags('User');
 /*............................................................................................. */
 
 // Start products API
+export const getProductBody = () =>
+  ApiBody({
+      schema: {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+            example: 'TracNet Device',
+          },
+          imei_no: {
+            type: 'string',
+            example: '865385060036212',
+          },
+          productModelId: {
+            type: 'string',
+            example: 'productModel.Id',
+          },
+        },
+      },
+    });
 export const getproductsOperation = () =>
   ApiOperation({ summary: 'Get all products' });
+
+export const getProductParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The Id of the device',
+    example: 'objectId(123)',
+    required: true,
+});
+
+export const deleteProductParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The Id of the product',
+    example: 'objectId(123)',
+    required: true,
+  });
 
 export const getProductsResponse = () =>
   ApiResponse({ status: 200, description: 'Return all products' });
 
-export const productTags = () => ApiTags('Product');
-
+export const productTags = () => ApiTags('Device');
 // End products API
 
 

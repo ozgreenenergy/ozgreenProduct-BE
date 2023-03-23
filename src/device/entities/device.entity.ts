@@ -1,6 +1,7 @@
 import { Column ,  PrimaryGeneratedColumn , OneToOne ,  JoinColumn } from 'typeorm';
-import {  } from 'typeorm';
 import { ProductCategory } from 'src/product-category/product-category.model'
+import { Prop , Schema , SchemaFactory } from '@nestjs/mongoose';
+import { Document, Types, Schema as MongooseSchema } from 'mongoose';
 
 export class Device {
     @PrimaryGeneratedColumn()
@@ -13,10 +14,9 @@ export class Device {
     imei_no: string;
 
     @Column()
+    productModelId: string;
+   
+    @Column()
     createdAt: Date;
-
-
-    @OneToOne(type => ProductCategory, productCategory => productCategory.modelId)
-    productModelId: ProductCategory;
 }
 
