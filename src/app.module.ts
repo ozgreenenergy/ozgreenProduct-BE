@@ -12,6 +12,8 @@ import { ResponseInterceptor } from './auth/strategies/response';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { DeviceModule } from './device/device.module';
 import { ListenerScriptModule } from './listener-script/listener-script.module';
+import { SensorModule } from './sensor/sensor.module';
+import { UnitModule } from './unit/unit.module';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { ListenerScriptModule } from './listener-script/listener-script.module';
     ProductCategoryModule,
     DeviceModule,
     ListenerScriptModule,
+    SensorModule,
+    UnitModule,
   ],
   controllers: [AppController],
   providers: [
