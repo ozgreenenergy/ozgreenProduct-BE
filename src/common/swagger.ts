@@ -75,7 +75,7 @@ export const deleteUserParam = () =>
 
 export const userTags = () => ApiTags('User');
 
-// End products API
+// End User API
 
 /*............................................................................................. */
 
@@ -125,6 +125,49 @@ export const getProductsResponse = () =>
 export const productTags = () => ApiTags('Device');
 // End products API
 
+/*............................................................................................. */
+
+// Starts unit API
+export const getUnitBody = () =>
+  ApiBody({
+      schema: {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+            example: 'Upload Counter',
+          },
+          description: {
+            type: 'string',
+            example: 'test',
+          },
+        },
+      },
+    });
+export const getUnitOperation = () =>
+  ApiOperation({ summary: 'Get all units' });
+
+export const getUnitParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The Id of the unit',
+    example: 'objectId(123)',
+    required: true,
+});
+
+export const deleteUnitParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The Id of the unit',
+    example: 'objectId(123)',
+    required: true,
+  });
+
+export const getUnitResponse = () =>
+  ApiResponse({ status: 200, description: 'Return all units' });
+
+export const unitTags = () => ApiTags('Unit');
+// Ends unit API
 
 /*............................................................................................. */
 //Common API

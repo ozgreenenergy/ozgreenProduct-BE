@@ -4,8 +4,6 @@ import { CreateDeviceDto } from './dto/create-device.dto';
 import { UpdateDeviceDto } from './dto/update-device.dto';
 import { Device , DeviceDocument } from './schema/device.schema';
 import { Model } from 'mongoose';
-import { Equal , DataSource } from 'typeorm';
-
 
 @Injectable()
 export class DeviceService {
