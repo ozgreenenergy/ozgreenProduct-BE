@@ -6,8 +6,12 @@ export type UnitDocument = Unit & Document;
   
   @Schema()
   export class Unit {
+    
     @Prop()
     name: string;
+
+    @Prop()
+    unit_symbol: string;
   
     @Prop()
     description: string;

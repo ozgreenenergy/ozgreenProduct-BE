@@ -14,6 +14,7 @@ import { DeviceModule } from './device/device.module';
 import { ListenerScriptModule } from './listener-script/listener-script.module';
 import { SensorModule } from './sensor/sensor.module';
 import { UnitModule } from './unit/unit.module';
+import  config  from './config/configuration';
 
 @Module({
   imports: [
@@ -24,7 +25,10 @@ import { UnitModule } from './unit/unit.module';
     MongooseModule.forRoot(
       'mongodb://localhost/tracNetJWT',
     ),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [config]
+    }),
     ProductCategoryModule,
     DeviceModule,
     ListenerScriptModule,
