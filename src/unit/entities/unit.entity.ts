@@ -8,6 +8,9 @@ export class Unit {
     name: string;
 
     @Column()
+    unit_symbol: string;
+
+    @Column()
     description: string;
 
     @Column()
