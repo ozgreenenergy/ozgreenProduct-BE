@@ -1,6 +1,6 @@
 export class CreateSensorDto {
     name: string;
-    unit: string;
-    kind: string
-    decimalPlaces: string;
+    kind: string;
+    unitId: string;
+    decimalPlaces: number;
 }
