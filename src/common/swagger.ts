@@ -125,6 +125,11 @@ export const getProductsResponse = () =>
 export const productTags = () => ApiTags('Device');
 // End products API
 
+// Start roles API
+export const getrolesOperation = () =>
+  ApiOperation({ summary: 'Data of Role' });
+
+export const getRoleBody = () =>
 /*............................................................................................. */
 
 // Starts unit API
@@ -135,6 +140,28 @@ export const getUnitBody = () =>
         properties: {
           name: {
             type: 'string',
+            example: 'test',
+          },
+          lable: {
+            type: 'string',
+            example: 'test',
+          },
+        },
+      },
+  });
+
+export const getRoleParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The ID of the role',
+    example: 'objectId(123)',
+    required: true,
+  });
+
+export const deleteRoleParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The ID of the role',
             example: 'Temperature',
           },
           unit_symbol: {
@@ -167,11 +194,21 @@ export const deleteUnitParam = () =>
     required: true,
   });
 
+
+export const getrolesResponse = () =>
+  ApiResponse({ status: 200, description: 'Details of Role' });
+
+export const rolesTags = () => ApiTags('Role');
+
+// End roles API
+
+
 export const getUnitResponse = () =>
   ApiResponse({ status: 200, description: 'Return all units' });
 
 export const unitTags = () => ApiTags('Unit');
 // Ends unit API
+
 
 /*............................................................................................. */
 
