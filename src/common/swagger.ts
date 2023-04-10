@@ -11,7 +11,7 @@ ApiBody({
       properties: {
         username: {
           type: 'string',
-          example: 'testData@gmail.com',
+          example: 'mailto:testdata@gmail.com',
         },
         password: {
           type: 'string',
@@ -35,7 +35,7 @@ export const getUserBody = () =>
           },
           username: {
             type: 'string',
-            example: 'Rahudemo@gmail.com',
+            example: 'mailto:rahudemo@gmail.com',
           },
           password: {
             type: 'string',
@@ -53,7 +53,7 @@ export const loginTags = () => ApiTags('Authentication');
 
 // End Login API
 
-/*............................................................................................. */
+/............................................................................................. /
 
 // Start User Details API
 
@@ -77,7 +77,7 @@ export const userTags = () => ApiTags('User');
 
 // End User API
 
-/*............................................................................................. */
+/............................................................................................. /
 
 // Start products API
 export const getProductBody = () =>
@@ -125,12 +125,7 @@ export const getProductsResponse = () =>
 export const productTags = () => ApiTags('Device');
 // End products API
 
-// Start roles API
-export const getrolesOperation = () =>
-  ApiOperation({ summary: 'Data of Role' });
-
-export const getRoleBody = () =>
-/*............................................................................................. */
+/............................................................................................. /
 
 // Starts unit API
 export const getUnitBody = () =>
@@ -140,28 +135,6 @@ export const getUnitBody = () =>
         properties: {
           name: {
             type: 'string',
-            example: 'test',
-          },
-          lable: {
-            type: 'string',
-            example: 'test',
-          },
-        },
-      },
-  });
-
-export const getRoleParam = () =>
-  ApiParam({
-    name: 'id',
-    description: 'The ID of the role',
-    example: 'objectId(123)',
-    required: true,
-  });
-
-export const deleteRoleParam = () =>
-  ApiParam({
-    name: 'id',
-    description: 'The ID of the role',
             example: 'Temperature',
           },
           unit_symbol: {
@@ -194,23 +167,13 @@ export const deleteUnitParam = () =>
     required: true,
   });
 
-
-export const getrolesResponse = () =>
-  ApiResponse({ status: 200, description: 'Details of Role' });
-
-export const rolesTags = () => ApiTags('Role');
-
-// End roles API
-
-
 export const getUnitResponse = () =>
   ApiResponse({ status: 200, description: 'Return all units' });
 
 export const unitTags = () => ApiTags('Unit');
 // Ends unit API
 
-
-/*............................................................................................. */
+/............................................................................................. /
 
 // Starts product model API
 export const getProductModelBody = () =>
@@ -258,7 +221,7 @@ export const getProductModelResponse = () =>
 export const productModelTags = () => ApiTags('Product Model');
 // Ends product model API
 
-/*............................................................................................. */
+/............................................................................................. /
 
 // Starts sensor API
 export const getSensorBody = () =>
@@ -310,6 +273,50 @@ export const getSensorResponse = () =>
 
 export const sensorTags = () => ApiTags('Sensor');
 // Ends Sensor API
+
+// Start roles API
+export const getrolesOperation = () =>
+  ApiOperation({ summary: 'Data of Role' });
+
+export const getRoleBody = () =>
+  ApiBody({
+      schema: {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+            example: 'test',
+          },
+          lable: {
+            type: 'string',
+            example: 'test',
+          },
+        },
+      },
+  });
+
+export const getRoleParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The ID of the role',
+    example: 'objectId(123)',
+    required: true,
+  });
+
+export const deleteRoleParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The ID of the role',
+    example: 'objectId(123)',
+    required: true,
+  });
+
+export const getrolesResponse = () =>
+  ApiResponse({ status: 200, description: 'Details of Role' });
+
+export const rolesTags = () => ApiTags('Role');
+
+// End roles API
 
 //Common API
 export { ApiBearerAuth };
