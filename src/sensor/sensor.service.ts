@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { CreateSensorDto } from './dto/create-sensor.dto';
 import { UpdateSensorDto } from './dto/update-sensor.dto';
+import { Sensor , SensorDocument } from './schema/sensor.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class SensorService {
-  create(createSensorDto: CreateSensorDto) {
-    return 'This action adds a new sensor';
+  
+  constructor(@InjectModel(Sensor.name)  private readonly sensorDocument: Model < SensorDocument > ){}
+  
+  async create(createSensorDto: CreateSensorDto) {
+    return new this.sensorDocument(createSensorDto).save();
   }
 
-  findAll() {
-    return `This action returns all sensor`;
+  async findAll() {
+    return await this.sensorDocument.find({ relations: ['productModelId']});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} sensor`;
+  async findOne(id: number) {
+    return await this.sensorDocument.findById(id);
   }
 
-  update(id: number, updateSensorDto: UpdateSensorDto) {
-    return `This action updates a #${id} sensor`;
+  async update(id: number, updateSensorDto: UpdateSensorDto) {
+    return this.sensorDocument.findByIdAndUpdate(id, updateSensorDto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} sensor`;
+  async remove(id: number) {
+    return this.sensorDocument.findByIdAndRemove(id).exec();
   }
 }

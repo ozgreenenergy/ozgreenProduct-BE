@@ -26,10 +26,7 @@ export class DeviceService {
   }
 
   async findAll() {
-    return await this.deviceModel.find({relations: {
-        productModelId: true
-      }
-    });
+    return await this.deviceModel.find({ relations: ['productModelId', 'productModelId.modelId']});
   }
 
   async findOne(id: number) {

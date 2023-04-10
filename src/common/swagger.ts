@@ -221,5 +221,58 @@ export const getProductModelResponse = () =>
 export const productModelTags = () => ApiTags('Product Model');
 // Ends product model API
 
+/*............................................................................................. */
+
+// Starts sensor API
+export const getSensorBody = () =>
+  ApiBody({
+      schema: {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+            example: 'TracNet Manhole Full Sensor',
+          },
+          kind: {
+            type: 'string',
+            example: 'Bool',
+          },
+          unitId: {
+            type: 'string',
+            example: 'objectId(Unit)',
+          },
+          decimalPlaces: {
+            type: 'number',
+            example: '2',
+          },
+        },
+      },
+    });
+    
+export const getSensorOperation = () =>
+  ApiOperation({ summary: 'Get all Sensor' });
+
+export const getSensorParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The Id of the Sensor',
+    example: 'objectId(123)',
+    required: true,
+});
+
+export const deleteSensorParam = () =>
+  ApiParam({
+    name: 'id',
+    description: 'The Id of the Sensor',
+    example: 'objectId(123)',
+    required: true,
+  });
+
+export const getSensorResponse = () =>
+  ApiResponse({ status: 200, description: 'Return all Sensor' });
+
+export const sensorTags = () => ApiTags('Sensor');
+// Ends Sensor API
+
 //Common API
 export { ApiBearerAuth };
