@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { ListenerGateway } from 'src/listener-script/listener.gateway';
+// import { Module } from '@nestjs/common';
+// import { ServerService } from './server.service';
 
-@Module({
-    providers: [ListenerGateway],
-})
-export class ListenerScriptModule {}
+// @Module({
+//     providers: [ServerService]
+// })
+// export class ListenerScriptModule {}

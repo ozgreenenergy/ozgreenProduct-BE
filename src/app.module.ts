@@ -11,9 +11,9 @@ import { MenuModule } from './menu/menus.module';
 import { ResponseInterceptor } from './auth/strategies/response';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { DeviceModule } from './device/device.module';
-import { ListenerScriptModule } from './listener-script/listener-script.module';
 import { SensorModule } from './sensor/sensor.module';
 import { UnitModule } from './unit/unit.module';
+//import { ListenerScriptModule } from './listener-script/listener-script.module';
 import  config  from './config/configuration';
 
 @Module({
@@ -31,7 +31,7 @@ import  config  from './config/configuration';
     }),
     ProductCategoryModule,
     DeviceModule,
-    ListenerScriptModule,
+    //ListenerScriptModule,
     SensorModule,
     UnitModule,
   ],

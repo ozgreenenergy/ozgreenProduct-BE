@@ -15,7 +15,7 @@ export class SensorService {
   }
 
   async findAll() {
-    return await this.sensorDocument.find({ relations: ['productModelId']});
+    return await this.sensorDocument.find().populate("unitId", "name  unit_symbol");
   }
 
   async findOne(id: number) {
