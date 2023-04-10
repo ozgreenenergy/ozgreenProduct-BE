@@ -5,7 +5,6 @@ import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
-import { ProductModule } from './product/products.module';
 import { CustomerModule } from './customer/customers.module';
 import { ProductCategoryModule } from './product-category/product-category.module';
 import { MenuModule } from './menu/menus.module';
@@ -14,25 +13,31 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { DeviceModule } from './device/device.module';
 import { RolesModule } from './roles/roles.module';
 import { RoleUserModule } from './roles/role-users/role-user.module';
-
-
+import { SensorModule } from './sensor/sensor.module';
+import { UnitModule } from './unit/unit.module';
+//import { ListenerScriptModule } from './listener-script/listener-script.module';
+import  config  from './config/configuration';
 
 @Module({
   imports: [
     UsersModule,
-    ProductModule,
     AuthModule,
     CustomerModule,
     MenuModule,
     MongooseModule.forRoot(
       'mongodb://localhost/tracNetJWT',
     ),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [config]
+    }),
     ProductCategoryModule,
     DeviceModule,
     RolesModule,
     RoleUserModule,
-    
+    //ListenerScriptModule,
+    SensorModule,
+    UnitModule,
   ],
   controllers: [AppController],
   providers: [

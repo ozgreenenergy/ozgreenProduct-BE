@@ -4,8 +4,6 @@ import { CreateDeviceDto } from './dto/create-device.dto';
 import { UpdateDeviceDto } from './dto/update-device.dto';
 import { Device , DeviceDocument } from './schema/device.schema';
 import { Model } from 'mongoose';
-import { Equal , DataSource } from 'typeorm';
-
 
 @Injectable()
 export class DeviceService {
@@ -28,18 +26,19 @@ export class DeviceService {
   }
 
   async findAll() {
-    return await this.deviceModel.find({relations: ['productModelId', 'productModelId.name']});
+    //return await this.deviceModel.find({ relations: ['productModelId', 'productModelId.modelId']});
+    return await this.deviceModel.find().populate("productModelId", "modelId  name");;
   }
 
   async findOne(id: number) {
-    return await this.deviceModel.find( { id: id } , {relations: ['productModelId']});
+    return await this.deviceModel.findById(id);
   }
 
   async update(id: number, updateDeviceDto: UpdateDeviceDto): Promise< DeviceDocument > {
     return this.deviceModel.findByIdAndUpdate(id, updateDeviceDto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} device`;
+  async remove(id: string): Promise< DeviceDocument > {
+    return this.deviceModel.findByIdAndRemove(id).exec();
   }
 }

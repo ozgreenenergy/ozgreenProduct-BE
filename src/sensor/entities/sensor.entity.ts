@@ -1,6 +1,6 @@
 import { Column ,  PrimaryGeneratedColumn } from 'typeorm';
 
-export class Device {
+export class Sensor {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -8,12 +8,14 @@ export class Device {
     name: string;
 
     @Column()
-    imei_no: string;
+    kind: string;
 
     @Column()
-    productModelId: string;
-   
+    unitId: string;
+
+    @Column()
+    decimalPlaces: number;
+
     @Column()
     createdAt: Date;
 }
-

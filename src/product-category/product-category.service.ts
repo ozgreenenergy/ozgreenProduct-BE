@@ -15,6 +15,10 @@ export class ProductCategoryService {
         });
     }
 
+    async findOne(id: number) {
+        return await this.productCategory.findById(id);
+    }
+
     async findAll(): Promise<ProductCategory[]> {
         return this.productCategory.find().exec();
     }
