@@ -10,8 +10,9 @@ export class ProductCategory {
   @Prop()
   name: string;
 
-  //@Prop()
-  //modelId: string;
+  @Prop()
+  @OneToMany(type => Device, device => device.productModelId)
+  modelId: string;
 
   @Prop()
   description: string;
@@ -19,9 +20,6 @@ export class ProductCategory {
   
   @Prop({ type: Date})
   created_at: Date;
-
-  @OneToMany(type => Device, device => device.productModelId)
-    modelId: Device;
 }
 
 export const ProductCategorySchema = SchemaFactory.createForClass(ProductCategory);
