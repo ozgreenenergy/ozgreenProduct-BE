@@ -12,6 +12,8 @@ import { MenuModule } from './menu/menus.module';
 import { ResponseInterceptor } from './auth/strategies/response';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { DeviceModule } from './device/device.module';
+import { RolesModule } from './roles/roles.module';
+import { RoleUserModule } from './roles/role-users/role-user.module';
 
 
 
@@ -28,6 +30,8 @@ import { DeviceModule } from './device/device.module';
     ConfigModule.forRoot(),
     ProductCategoryModule,
     DeviceModule,
+    RolesModule,
+    RoleUserModule,
     
   ],
   controllers: [AppController],
