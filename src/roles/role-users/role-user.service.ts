@@ -15,7 +15,6 @@ export class RoleUserService {
       }
 
     async getUsers(): Promise<RoleUserDocument[]> {
-        //return this.roleUserModel.find({relations: {RoleUser: true}}).exec();
-      return this.roleUserModel.find().populate("userId");
+      return this.roleUserModel.find().populate([ "userId" , "roleId"]);
       }
 }
