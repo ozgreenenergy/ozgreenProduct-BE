@@ -14,8 +14,26 @@ export class SensorService {
     return new this.sensorDocument(createSensorDto).save();
   }
 
-  async findAll() {
-    return await this.sensorDocument.find().populate("unitId", "name  unit_symbol");
+  async findAll(page: number = 1, limit: number = 10) {
+    // Validate page and limit parameters
+    page = Number.isInteger(Number(page)) ? Math.max(1, Number(page)) : 1;
+    limit = Number.isInteger(Number(limit)) ? Math.max(1, Number(limit)) : 10;
+
+    const skip = (page - 1) * limit;
+    const total = await this.sensorDocument.countDocuments();
+
+    const sensor = await this.sensorDocument.find().populate("unitId", "name  unit_symbol").skip(skip).limit(limit).exec();
+
+    // Return paginated results
+    return {
+      total,
+      page,
+      limit,
+      data: sensor,
+    };
+
+
+    // return await this.sensorDocument.find().populate("unitId", "name  unit_symbol");
   }
 
   async findOne(id: number) {

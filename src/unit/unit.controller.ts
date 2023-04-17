@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards, Query } from '@nestjs/common';
 import { UnitService } from './unit.service';
 import { CreateUnitDto } from './dto/create-unit.dto';
 import { UpdateUnitDto } from './dto/update-unit.dto';
@@ -22,8 +22,18 @@ export class UnitController {
   @unitTags()
   @ApiBearerAuth('token')
   @Get()
-  async findAll() {
-    return await this.unitService.findAll();
+  async findAll(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+  ) {
+    const result = await this.unitService.findAll(page, limit);
+    return {
+      data: result.data,
+      page: result.page,
+      limit: result.limit,
+      total: result.total,
+    };
+    // return await this.unitService.findAll();
   }
 
   @UseGuards(AuthGuard('jwt'))

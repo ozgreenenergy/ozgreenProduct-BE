@@ -7,6 +7,7 @@ import {
   Param,
   Put,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UsersService } from './users.service';
@@ -36,8 +37,17 @@ export class UsersController {
   @userTags()
   @ApiBearerAuth('token')
   @Get()
-  async getAllUsers() {
-    return this.userService.getUsers();
+  async getAllUsers(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+  ) {
+    const result = await this.userService.getUsers(page, limit);
+    return {
+      data: result.data,
+      page: result.page,
+      limit: result.limit,
+      total: result.total,
+    };
   }
 
   @UseGuards(AuthGuard('jwt'))

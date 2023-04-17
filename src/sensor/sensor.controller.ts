@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards, Query } from '@nestjs/common';
 import { SensorService } from './sensor.service';
 import { CreateSensorDto } from './dto/create-sensor.dto';
 import { UpdateSensorDto } from './dto/update-sensor.dto';
@@ -22,8 +22,18 @@ export class SensorController {
   @sensorTags()
   @ApiBearerAuth('token')
   @Get()
-  findAll() {
-    return this.sensorService.findAll();
+  async findAll(
+    @Query('page') page: number = 1,
+    @Query('limit') limit: number = 10,
+  ) {
+    const result = await this.sensorService.findAll(page, limit);
+    return {
+      data: result.data,
+      page: result.page,
+      limit: result.limit,
+      total: result.total,
+    };
+    // return this.sensorService.findAll();
   }
 
   @UseGuards(AuthGuard('jwt'))

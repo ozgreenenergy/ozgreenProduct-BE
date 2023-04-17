@@ -19,8 +19,30 @@ export class UsersService {
       status : 1
     });
   }
-  async getUsers(): Promise<User[]> {
-    return this.userModel.find().exec();
+  async getUsers(page: number = 1, limit: number = 10):  Promise<{
+    total: number;
+    page: number;
+    limit: number;
+    data: User[];
+  }> {
+     // Validate page and limit parameters
+     page = Number.isInteger(Number(page)) ? Math.max(1, Number(page)) : 1;
+     limit = Number.isInteger(Number(limit)) ? Math.max(1, Number(limit)) : 10;
+
+     // Calculate skip and limit values
+    const skip = (page - 1) * limit;
+    const total = await this.userModel.countDocuments();
+
+    // Retrieve data from the database
+    const users = await this.userModel.find().skip(skip).limit(limit).exec();
+
+    // Return paginated results
+    return {
+      total,
+      page,
+      limit,
+      data: users,
+    };
   }
 
   async getUser({ username, password }): Promise<User | undefined> {
