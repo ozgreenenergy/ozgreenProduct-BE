@@ -16,6 +16,7 @@ import { RoleUserModule } from './roles/role-users/role-user.module';
 import { SensorModule } from './sensor/sensor.module';
 import { UnitModule } from './unit/unit.module';
 //import { ListenerScriptModule } from './listener-script/listener-script.module';
+import { NavitemModule } from './navitem/navitem.module';
 import  config  from './config/configuration';
 
 @Module({
@@ -38,6 +39,7 @@ import  config  from './config/configuration';
     //ListenerScriptModule,
     SensorModule,
     UnitModule,
+    NavitemModule,
   ],
   controllers: [AppController],
   providers: [

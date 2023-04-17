@@ -32,7 +32,6 @@ export class SensorController {
   @ApiBearerAuth('token')
   @Get(':id')
   findOne(@Param('id') id: number) {
-    console.log(id, "id")
     return this.sensorService.findOne(id);
   }
 

@@ -8,9 +8,7 @@ import { Submenu } from './submenus.model';
 export class MenuService {
   constructor(
     @InjectModel('Menu') private readonly menuModel: Model<Menu>,
-    @InjectModel('Submenu') private readonly submenuModel: Model<Submenu>,
-
-    // @InjectModel(Menu.name) private menuItemModel: Model<MenuItemDocument>,
+    @InjectModel('Submenu') private readonly submenuModel: Model<Submenu>
   ) {}
 
   async findAll(): Promise<Menu[]> {
