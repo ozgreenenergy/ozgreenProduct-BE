@@ -15,7 +15,8 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
       password,
     );
     if (!user) {
-      throw new UnauthorizedException();
+      return {status: '404',message: 'user not found'};
+      //throw new UnauthorizedException();
     }
     return user;
   }

@@ -16,6 +16,7 @@ import { RoleUserModule } from './roles/role-users/role-user.module';
 import { SensorModule } from './sensor/sensor.module';
 import { UnitModule } from './unit/unit.module';
 //import { ListenerScriptModule } from './listener-script/listener-script.module';
+import { RawDataModule } from './raw-data/raw-data.module';
 import  config  from './config/configuration';
 
 @Module({
@@ -25,7 +26,7 @@ import  config  from './config/configuration';
     CustomerModule,
     MenuModule,
     MongooseModule.forRoot(
-      'mongodb://localhost/tracNetJWT',
+      'mongodb://54.253.133.85/tracNetJWT',
     ),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -38,6 +39,7 @@ import  config  from './config/configuration';
     //ListenerScriptModule,
     SensorModule,
     UnitModule,
+    RawDataModule,
   ],
   controllers: [AppController],
   providers: [
