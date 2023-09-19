@@ -18,6 +18,7 @@ import { UnitModule } from './unit/unit.module';
 //import { ListenerScriptModule } from './listener-script/listener-script.module';
 import { RawDataModule } from './raw-data/raw-data.module';
 import  config  from './config/configuration';
+import { PortalModule } from './portal/portal.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import  config  from './config/configuration';
     SensorModule,
     UnitModule,
     RawDataModule,
+    PortalModule,
   ],
   controllers: [AppController],
   providers: [
