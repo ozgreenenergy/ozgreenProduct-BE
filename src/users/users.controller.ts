@@ -18,18 +18,21 @@ import * as bcrypt from 'bcrypt';
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
   @loginTags()
-  @Post('')
+  @Post('/add')
   @getUserBody()
   @getUserOperation()
   async createUser(
     @Body('username') username: string,
+    @Body('email') email: string,
+    @Body('phone_number') phone_number: Number,
+    @Body('description') description: string,
     @Body('password') password: string,
-    @Body('fullName') fullName: string,
+    @Body('username') fullName: string,
     @Body('status') status: Number,
-  ) {
+  ) {    
     const saltOrRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltOrRounds);
-    return this.userService.createUser(username, hashedPassword, fullName, status);
+    return this.userService.createUser(username, hashedPassword, fullName, status, email, phone_number, description);
   }
   
   @UseGuards(AuthGuard('jwt'))

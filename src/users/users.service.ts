@@ -11,11 +11,14 @@ export class UsersService {
     private readonly httpService: HttpService,
   ) {}
 
-  async createUser(username: string, password: string, fullName: string, status: Number): Promise<User> {
+  async createUser(username: string, password: string, fullName: string, status: Number, email : string, phone_number : Number, description: string): Promise<User> {
     return this.userModel.create({
       username,
       password,
       fullName,
+      email,
+      phone_number,
+      description,
       status : 1
     });
   }
