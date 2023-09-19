@@ -13,12 +13,10 @@ export class PortalService {
     let name = CreatePortalDto['portal_name'];
     let check = this.checkRecordExists(name);
     
-    if((await check).length === 0) {
+   
       const data = new this.portalModel(createPortalDto);
       return data.save();
-    } else {
-      return "Duplicate Portal Entry!";
-    } 
+   
   }
 
   async checkRecordExists(portalName) {
