@@ -27,10 +27,7 @@ export class UsersService {
   }
 
   async getUser({ username, password }): Promise<User | undefined> {
-    return this.userModel.findOne({
-      username,
-      password,
-    });
+    return this.userModel.findOne({username});
   }
 
   async getMe(userId: any): Promise<User | undefined> {

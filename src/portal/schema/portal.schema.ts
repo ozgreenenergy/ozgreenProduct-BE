@@ -12,8 +12,8 @@ export type PortalDocument = Portal & Document;
     @Prop()
     logo: string;
 
-    @Prop({ type: Date , default: Date.now })
-    timezone: Date  
+    @Prop()
+    timezone: string  
     
     @Prop({ type: Date , default: Date.now })
     createdAt: Date

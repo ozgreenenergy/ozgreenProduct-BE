@@ -11,7 +11,7 @@ export class Portal {
     logo: string;
 
     @Column()
-    timezone: Date;
+    timezone: string;
 
     @Column()
     createdAt: Date;
