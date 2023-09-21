@@ -5,7 +5,7 @@ export class Portal {
     id: number;
 
     @Column()
-    portal_name: string;
+    id_name: string;
 
     @Column()
     logo: string;

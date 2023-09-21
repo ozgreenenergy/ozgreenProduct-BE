@@ -7,7 +7,7 @@ export type PortalDocument = Portal & Document;
   export class Portal {
     
     @Prop()
-    portal_name: string;
+    id_name: string;
 
     @Prop()
     logo: string;

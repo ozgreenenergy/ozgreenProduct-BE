@@ -1,4 +1,4 @@
 export class CreatePortalDto {
-    portal_name: string;
+    id_name: string;
     logo: string;
 }

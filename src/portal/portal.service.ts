@@ -10,7 +10,7 @@ export class PortalService {
   constructor( @InjectModel(Portal.name) private readonly portalModel: Model < PortalDocument > ) {}
 
   async create(createPortalDto: CreatePortalDto) {
-    let name = CreatePortalDto['portal_name'];
+    let name = CreatePortalDto['id_name'];
     let check = this.checkRecordExists(name);
     
    
