@@ -27,7 +27,7 @@ import { PortalModule } from './portal/portal.module';
     CustomerModule,
     MenuModule,
     MongooseModule.forRoot(
-      'mongodb://54.253.133.85/tracNetJWT',
+      'mongodb://54.253.133.85/trackNet_dev',
     ),
     ConfigModule.forRoot({
       isGlobal: true,
